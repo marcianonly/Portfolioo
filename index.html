@@ -23,7 +23,6 @@ nav, footer {
     margin-right: 0 !important;
 }
 
-/* Media Query for Tablets and Mobile Phones (Max-width: 768px) */
 @media (max-width: 768px) {
     /* Stack the Hero section vertically */
     .hero-flex {
@@ -62,13 +61,55 @@ nav, footer {
         text-align: center;
     }
 
-    /* Adjust navigation links spacing for smaller screens */
+    /* --- Mobile Navigation & Smooth Transition --- */
+    nav {
+        justify-content: space-between; 
+        padding: 20px; 
+        width: 100% !important;
+        left: auto !important;
+        right: auto !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .hamburger-btn {
+        display: block; /* Show the ☰ button on mobile */
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #2c3e50; 
+        
+        /* Smooth Transition Properties */
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        padding: 0 0;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+        text-align: center;
+        transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, padding 0.4s ease-in-out;
+    }
+
+    /* Triggered via JavaScript when toggled */
+    .nav-links.active {
+        max-height: 300px;
+        opacity: 1;
+        visibility: visible;
+        padding: 15px 0;
+    }
+
     nav a {
-        margin: 0 12px;
+        margin: 10px 0 !important; 
         font-size: 0.9rem;
     }
-}
-        /* --- COMBINED STYLES FROM ALL PAGES --- */
+}      
+  /* --- COMBINED STYLES FROM ALL PAGES --- */
         * {
             margin: 0;
             padding: 0;
@@ -93,12 +134,14 @@ nav, footer {
             --accent-blue: #3498db;
         }
 
-        /* Navigation Bar */
- nav { 
+/* ==========================================
+   1. GLOBAL NAVIGATION STYLES (Desktop & Base)
+   ========================================== */
+nav { 
     background: #2c3e50; 
-    padding: 25px 0; /* Restored your original comfortable vertical padding */
+    padding: 25px 0; 
     display: flex;
-    justify-content: center; /* Centers links on desktop */
+    justify-content: center; 
     align-items: center;
     margin-top: 0; 
     width: 100vw; 
@@ -121,30 +164,56 @@ nav, footer {
     cursor: pointer;
 }
 
-/* Group container for links */
 .nav-links {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px; /* Controls how wide the entire navigation menu stretches */
+    margin: 0 auto;
 }
 
+/* Box-Style Navigation Links */
 nav a { 
-    color: #fff; 
+    color: #94a3b8; /* Muted text color for unselected tabs */
     text-decoration: none; 
-    margin: 0 30px; /* Restored your original link spacing */
+    flex: 1;
+    margin: 0 6px; 
+    padding: 10px 16px;
+    text-align: center;
+    border-radius: 4px; /* Box-type style (change to 0px for completely sharp corners) */
     font-weight: bold; 
-    transition: 0.3s;
+    position: relative;
     cursor: pointer;
+    transition: background-color 0.25s ease, 
+                color 0.25s ease, 
+                transform 0.1s ease;
 }
 
-nav a:hover, nav a.active-nav { 
-    color: #3498db; 
+/* Hover state: subtle background fade */
+nav a:hover { 
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff; 
 }
 
-/* --- Mobile Screen Responsiveness --- */
+/* Active / Selected Tab State (Box Highlight) */
+nav a.active-nav { 
+    background-color: rgba(52, 152, 219, 0.2); /* Soft blue box background */
+    color: #3498db !important; /* Bright blue accent text */
+}
+
+/* Quick physical press feedback */
+nav a:active {
+    transform: scale(0.96);
+}
+
+
+/* ==========================================
+   2. MOBILE SCREEN RESPONSIVENESS (< 768px)
+   ========================================== */
 @media (max-width: 768px) {
     nav {
-        justify-content: space-between; /* Puts hamburger on the side for mobile */
-        padding: 15px 20px; /* Padding for mobile view */
+        justify-content: space-between; 
+        padding: 15px 20px; 
         width: 100% !important;
         left: auto !important;
         right: auto !important;
@@ -153,7 +222,7 @@ nav a:hover, nav a.active-nav {
     }
 
     .hamburger-btn {
-        display: block; /* Shows the ☰ icon on mobile phones */
+        display: block; /* Show the ☰ icon on mobile */
     }
 
     .nav-links {
@@ -163,20 +232,22 @@ nav a:hover, nav a.active-nav {
         top: 100%;
         left: 0;
         width: 100%;
-        background: #2c3e50; /* Matches your classic navbar color */
+        background: #2c3e50; 
         padding: 15px 0;
         box-shadow: 0 10px 15px rgba(0,0,0,0.3);
         text-align: center;
     }
 
-    /* Triggered via JavaScript when clicked */
+    /* Triggered via JavaScript when toggled */
     .nav-links.active {
         display: flex;
     }
 
     nav a {
-        margin: 10px 0 !important; /* Stack links vertically with nice spacing */
+        margin: 6px 20px !important; 
+        padding: 10px 0;
         font-size: 1rem;
+        border-radius: 4px;
     }
 }
         /* Container Layout */
@@ -496,18 +567,15 @@ nav a:hover, nav a.active-nav {
 
     <!-- NAVIGATION BAR -->
 <nav>
-    <!-- Mobile Hamburger Button -->
     <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle Navigation">&#9776;</button>
 
-    <!-- Navigation Links Container -->
     <div id="navLinks" class="nav-links">
-        <a onclick="switchPage('home', this); toggleMenu();" class="active-nav">Home</a>
-        <a onclick="switchPage('portfolio', this); toggleMenu();">Projects</a>
-        <a onclick="switchPage('about', this); toggleMenu();">About Me</a>
-        <a onclick="switchPage('contact', this); toggleMenu();">Contact</a>
+        <a onclick="animateAndSwitch('home', this); toggleMenu();" class="active-nav">Home</a>
+        <a onclick="animateAndSwitch('portfolio', this); toggleMenu();">Projects</a>
+        <a onclick="animateAndSwitch('about', this); toggleMenu();">About Me</a>
+        <a onclick="animateAndSwitch('contact', this); toggleMenu();">Contact</a>
     </div>
 </nav>
-
     <div class="container">
 
         <!-- HOME PAGE VIEW -->
@@ -840,6 +908,16 @@ nav a:hover, nav a.active-nav {
 
     <!-- JAVASCRIPT FOR PAGE SWITCHING & ANIMATIONS -->
     <script>
+        function animateAndSwitch(pageId, element) {
+    // 1. Add a temporary click-animation class
+    element.classList.add('nav-clicked');
+
+    // 2. Wait 150ms for the animation to be visible, then switch the page
+    setTimeout(() => {
+        switchPage(pageId, element);
+        element.classList.remove('nav-clicked');
+    }, 150);
+}
         function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     navLinks.classList.toggle('active');
