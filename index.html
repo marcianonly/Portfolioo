@@ -45,7 +45,8 @@ nav, footer {
     .about-container > div[style*="grid-template-columns"] {
         grid-template-columns: 1fr !important;
     }
-.dual-video-grid, 
+
+    .dual-video-grid, 
     .contact-grid, 
     .stats-grid {
         grid-template-columns: 1fr !important;
@@ -54,7 +55,7 @@ nav, footer {
     .project-card {
         padding: 15px !important;
     }
-    
+
     /* Stack profile card layout */
     .profile-card {
         flex-direction: column;
@@ -93,34 +94,91 @@ nav, footer {
         }
 
         /* Navigation Bar */
-        nav { 
-            background: #2c3e50; 
-            padding: 20px 0; 
-            text-align: center;
-            margin-top: 0; 
-            width: 100vw; 
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
+ nav { 
+    background: #2c3e50; 
+    padding: 25px 0; /* Restored your original comfortable vertical padding */
+    display: flex;
+    justify-content: center; /* Centers links on desktop */
+    align-items: center;
+    margin-top: 0; 
+    width: 100vw; 
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
 
-        nav a { 
-            color: #fff; 
-            text-decoration: none; 
-            margin: 0 30px; 
-            font-weight: bold; 
-            transition: 0.3s;
-            cursor: pointer;
-        }
+/* Hide the hamburger button by default on desktop */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
 
-        nav a:hover, nav a.active-nav { 
-            color: #3498db; 
-        }
+/* Group container for links */
+.nav-links {
+    display: flex;
+    justify-content: center;
+}
 
+nav a { 
+    color: #fff; 
+    text-decoration: none; 
+    margin: 0 30px; /* Restored your original link spacing */
+    font-weight: bold; 
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+nav a:hover, nav a.active-nav { 
+    color: #3498db; 
+}
+
+/* --- Mobile Screen Responsiveness --- */
+@media (max-width: 768px) {
+    nav {
+        justify-content: space-between; /* Puts hamburger on the side for mobile */
+        padding: 15px 20px; /* Padding for mobile view */
+        width: 100% !important;
+        left: auto !important;
+        right: auto !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .hamburger-btn {
+        display: block; /* Shows the ☰ icon on mobile phones */
+    }
+
+    .nav-links {
+        display: none; /* Hidden by default on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #2c3e50; /* Matches your classic navbar color */
+        padding: 15px 0;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+        text-align: center;
+    }
+
+    /* Triggered via JavaScript when clicked */
+    .nav-links.active {
+        display: flex;
+    }
+
+    nav a {
+        margin: 10px 0 !important; /* Stack links vertically with nice spacing */
+        font-size: 1rem;
+    }
+}
         /* Container Layout */
         .container {
             max-width: 1000px;
@@ -437,12 +495,18 @@ nav, footer {
 <body>
 
     <!-- NAVIGATION BAR -->
-    <nav>
-        <a onclick="switchPage('home', this)" class="active-nav">Home</a>
-        <a onclick="switchPage('portfolio', this)">Projects</a>
-        <a onclick="switchPage('about', this)">About Me</a>
-        <a onclick="switchPage('contact', this)">Contact</a>
-    </nav>
+<nav>
+    <!-- Mobile Hamburger Button -->
+    <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle Navigation">&#9776;</button>
+
+    <!-- Navigation Links Container -->
+    <div id="navLinks" class="nav-links">
+        <a onclick="switchPage('home', this); toggleMenu();" class="active-nav">Home</a>
+        <a onclick="switchPage('portfolio', this); toggleMenu();">Projects</a>
+        <a onclick="switchPage('about', this); toggleMenu();">About Me</a>
+        <a onclick="switchPage('contact', this); toggleMenu();">Contact</a>
+    </div>
+</nav>
 
     <div class="container">
 
@@ -776,6 +840,10 @@ nav, footer {
 
     <!-- JAVASCRIPT FOR PAGE SWITCHING & ANIMATIONS -->
     <script>
+        function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    navLinks.classList.toggle('active');
+}
         function switchPage(pageId, element) {
             // Hide all views
             const views = document.querySelectorAll('.page-view');
