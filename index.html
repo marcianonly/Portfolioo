@@ -590,7 +590,98 @@ footer {
     margin-left: -50vw; 
     margin-right: -50vw;
 }
+/* ==========================================
+   FIXED FLOATING SQUARE WEATHER WIDGET
+   ========================================== */
+.fixed-weather-widget {
+    position: absolute;            /* Locks it relative to the viewport window */
+    top: 300px;                 /* Adjust top spacing to line up with your project top */
+    left: 20px;                 /* Distance from the left edge of the screen */
+    width: 200px;               /* Square Width */
+    height: 200px;              /* Square Height */
+    z-index: 999;               /* Keeps it visible on top of background grids */
+    border-radius: 12px;        /* Smooth rounded corners */
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
 
+/* Force the widget inside to fill the square box */
+.fixed-weather-widget .weatherwidget-io {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Hide on mobile/small screens so it doesn't block project cards */
+@media (max-width: 1200px) {
+    .fixed-weather-widget {
+        display: none;
+    }
+}
+
+/* ==========================================
+   IMAGE CAROUSEL STYLES
+   ========================================== */
+.project-carousel {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.carousel-images {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* Maintains a clean 16:9 widescreen video/image ratio */
+}
+
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    pointer-events: none;
+}
+
+.carousel-img.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Carousel Control Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(15, 23, 42, 0.7);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: #3498db;
+    border-color: #3498db;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.prev-btn { left: 12px; }
+.next-btn { right: 12px; }
 /* ==========================================
    8. RESPONSIVE / MEDIA QUERIES (< 768px)
    ========================================== */
@@ -697,6 +788,28 @@ footer {
 
         <!-- HOME PAGE VIEW -->
         <div id="home" class="page-view active-view">
+            <div class="fixed-weather-widget">
+    <a class="weatherwidget-io" 
+       href="https://forecast7.com/en/14d61121d02/metro-manila/" 
+       data-label_1="METRO MANILA" 
+       data-label_2="WEATHER" 
+       data-icons="Climacons Animated" 
+       data-mode="Current" 
+       data-theme="original">
+       METRO MANILA WEATHER
+    </a>
+    <script>
+    !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+            js=d.createElement(s);
+            js.id=id;
+            js.src='https://weatherwidget.io/js/widget.min.js';
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document,'script','weatherwidget-io-js');
+    </script>
+</div>
             <header>
                 <h1>Turning Complex Logic into Simple Solutions</h1>
                 <p class="hero-desc">
@@ -809,6 +922,8 @@ footer {
 
         <!-- PORTFOLIO / PROJECTS VIEW -->
         <div id="portfolio" class="page-view">
+           
+
             <section style="padding: 50px 0;">
                 <h2 style="color:#e2e8f0; margin-bottom: 30px;">Featured Projects</h2>
                     
@@ -824,19 +939,44 @@ footer {
                     <p style="color: #555; line-height: 1.6;">A simple digital storefront for a coffee shop featuring a dynamic menu and inquiries.</p>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <h3>Alumni System</h3>
-                    <div style="margin-bottom: 15px;">
-                        <span class='tech-badge'>JAVASCRIPT</span><span class='tech-badge'>PHP</span><span class='tech-badge'>BOOTSTRAP</span><span class='tech-badge'>CSS</span>
-                    </div>
-                    <div class="video-container">
-                        <iframe src="https://drive.google.com/file/d/1JrBPIpgrIGtZDpfJfEqROZLmHqxSPOZm/preview" allowfullscreen></iframe>
-                    </div>
-                    <p style="color: #555; line-height: 1.6;">A comprehensive system designed to manage university alumni data and facilitate networking.</p>
-                    <a href="https://drive.google.com/drive/folders/1NPGy6jLrVqRXoo_Tz7WF7Ge076hnAbRC?usp=sharing" target="_blank" class="btn" style="margin-top: 15px;  background: #3498db; color: #fff;">View Source Code</a>
-                </div>
+             <!-- Project 2 -->
+<div class="project-card">
+    <h3>Alumni System</h3>
+    <div style="margin-bottom: 15px;">
+        <span class='tech-badge'>JAVASCRIPT</span><span class='tech-badge'>PHP</span><span class='tech-badge'>BOOTSTRAP</span><span class='tech-badge'>CSS</span>
+    </div>
+    
+    <!-- Image Carousel Container -->
+    <div class="project-carousel" id="alumni-carousel">
+        <div class="carousel-images">
+            <!-- Add as many screenshots as you want here by adding the 'active' class to only the first one -->
+            <img src="1.png" alt="Login Page" class="carousel-img active">
+            <img src="2.png" alt="Account Register Page" class="carousel-img">
+            <img src="3.png" alt="Registar" class="carousel-img">
+             <img src="4.png" alt="Student Register" class="carousel-img">
+            <img src="5.png" alt="Student Register"" class="carousel-img">
+            <img src="6.png" alt="Dean(StudentsList)" class="carousel-img">
+             <img src="7.png" alt="Dean(Analysis)" class="carousel-img">
+            <img src="8.png" alt="IT Page" class="carousel-img">
+            <img src="9.png" alt="ACT Page" class="carousel-img">
+             <img src="10.png" alt="CS Page" class="carousel-img">
+           
+        </div>
+        
+        <!-- Previous & Next Buttons -->
+        <button class="carousel-btn prev-btn" onclick="moveSlide(-1, 'alumni-carousel')">&#10094;</button>
+        <button class="carousel-btn next-btn" onclick="moveSlide(1, 'alumni-carousel')">&#10095;</button>
+    </div>
 
+   <p style="color: #555; line-height: 1.6; margin-bottom: 15px;">
+    A secure web application optimizing alumni tracking and institutional reporting through dedicated user workflows:
+</p>
+<ul style="color: #555; line-height: 1.6; padding-left: 20px; margin-bottom: 15px; font-size: 0.95rem;">
+    <li><strong>Registrar Module:</strong> Full CRUD capabilities (add, edit, delete student information) with complete record-printing functionality.</li>
+    <li><strong>Dean Module:</strong> Secure access to view student records and track growth metrics through a visual data analytics dashboard.</li>
+</ul>
+    <a href="https://drive.google.com/drive/folders/1NPGy6jLrVqRXoo_Tz7WF7Ge076hnAbRC?usp=sharing" target="_blank" class="btn" style="margin-top: 15px; background: #3498db; color: #fff;">View Source Code</a>
+</div>
                 <!-- Project 3 -->
                 <div class="project-card">
                     <h3>CITCS Helpdesk System</h3>
@@ -857,7 +997,18 @@ footer {
                             </div>
                         </div>
                     </div>
-                    <p style="color: #555; line-height: 1.6;">A specialized ticketing solution. The Student Portal handles web requests, while the Windows Backend manages administrative data processing.</p>
+                   <p style="color: #555; line-height: 1.6; margin-bottom: 10px;">
+    An efficient campus support and ticketing platform featuring a responsive frontend student portal and a secure administrative backend panel:
+</p>
+<ul style="color: #555; line-height: 1.6; padding-left: 20px; margin-bottom: 15px; font-size: 0.95rem;">
+    <li><strong>Ticket Creation & Tracking (Student Portal):</strong> Allows students to easily submit support requests and look up existing ticket statuses.</li>
+    <li><strong>Smart Validation & Rate Limiting (Student Portal):</strong> Strictly monitors submissions by student number, preventing users from exceeding the daily ticket limit to avoid system spam.</li>
+    <li><strong>Automated Email Notifications (Student Portal):</strong> Automatically sends a confirmation email containing full ticket details to the user upon successful submission via PHPMailer.</li>
+    <li><strong>Interactive Feedback System (Student Portal):</strong> Features an intuitive rating and feedback interface allowing users to evaluate their experience after viewing their ticket details.</li>
+    <li><strong>Admin Authentication (Administrative Panel):</strong> Secure login and registration system restricted to authorized personnel.</li>
+    <li><strong>Comprehensive Record Management (Administrative Panel):</strong> A centralized dashboard where administrators can view all successfully submitted user records, as well as edit or delete student information when necessary.</li>
+    <li><strong>Direct Email Integration (Administrative Panel):</strong> Streamlines communication by allowing administrators to email students directly by clicking their email address in the backend records table.</li>
+</ul>
                     <a href="https://drive.google.com/drive/folders/1eTyWQA6ymD5bT6qde2p8nfZqXRW1IsSd?usp=sharing" target="_blank" class="btn" style="margin-top: 15px;  background: #3498db; color: #fff;">View Source Code</a>
                 </div>
             </section>
@@ -1054,6 +1205,25 @@ footer {
 
     <!-- JAVASCRIPT FOR PAGE SWITCHING & ANIMATIONS -->
     <script>
+  function moveSlide(direction, carouselId) {
+    const carousel = document.getElementById(carouselId);
+    const images = carousel.querySelectorAll('.carousel-img');
+    let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+    
+    // Hide current image
+    images[activeIndex].classList.remove('active');
+    
+    // Calculate new index (loops back to start or end seamlessly)
+    activeIndex += direction;
+    if (activeIndex >= images.length) {
+        activeIndex = 0; 
+    } else if (activeIndex < 0) {
+        activeIndex = images.length - 1; 
+    }
+    
+    // Show new image
+    images[activeIndex].classList.add('active');
+}
  // Define the SVG paths for Open and Closed eyes
 const openEyePath = "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z";
 const closedEyePath = "M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2z";
