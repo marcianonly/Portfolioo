@@ -310,6 +310,17 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+.about-grid-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+@media (max-width: 768px) {
+    .about-grid-layout {
+        grid-template-columns: 1fr !important;
+    }
+}
 
 .exp-item {
     margin-bottom: 25px;
@@ -751,10 +762,7 @@ footer {
         font-size: 2.2rem !important;
     }
 
-    .about-container > div[style*="grid-template-columns"] {
-        grid-template-columns: 1fr !important;
-    }
-
+  
     .dual-video-grid, 
     .contact-grid, 
     .stats-grid {
@@ -1052,112 +1060,112 @@ footer {
             </section>
         </div>
 
-        <!-- ABOUT ME VIEW -->
-        <div id="about" class="page-view">
-            <div class="about-container" style="padding: 40px 0; color: #333;">
-                <div class="hero-flex">
-                    <div class="hero-text">
-                        <span class="job-title">Junior IT Professional</span>
-                        <h1 style="font-size: 3rem; color: #e2e8f0; margin: 10px 0;">Mark Christian Cunanan</h1>
-                        <p style="font-size: 1.1rem; color: #e2e8f0; max-width: 600px;">
-                            I am a fresh graduate with a Bachelor of Science in Computer Science from Pamantasan ng Lungsod ng Muntinlupa,
-                            equipped with a solid foundation in backend systems and database management. Throughout my academic journey,
-                            I have focused heavily on mastering core programming concepts and applying them to engineer scalable IT solutions that solve real-world problems.
-                        </p>
-                    </div>
-                    <div class="hero-photo" style="text-align: right;">
-                        <img src="id.jpg" alt="Mark Christian Cunanan" class="profile-img" id="profileImage">
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;" class="about-grid-layout">
-                    <div>
-                        <div class="info-card">
-                            <h3 class="card-heading">Professional Summary</h3>
-                            <p style="line-height: 1.8;">
-                                Dedicated Computer Science graduate with a strong foundation in PHP, Java, and Database Management. I am committed to leveraging my technical education and problem-solving skills to contribute to a dynamic engineering team. My objective is to bridge the gap between academic theory and industry-standard software development.
-                            </p>
-                        </div>
-
-                        <div class="info-card">
-                            <h3 class="card-heading">Education</h3>
-                            <div class="exp-item">
-                                <strong>Bachelor of Science in Computer Science</strong><br>
-                                Pamantasan Lungsod ng Muntinlupa | <span class="exp-date">2023 - 2026</span>
-                            </div>
-                            <div class="exp-item">
-                                <strong>Information Technology & Web Development</strong><br>
-                                STI College Alabang (Senior High) | <span class="exp-date">2016 - 2018</span>
-                            </div>
-                        </div>
-
-                        <div class="info-card">
-                            <h3 class="card-heading">Work Experience</h3>
-                            <div class="exp-item">
-                                <strong>Counter Checker</strong><br>
-                                Landmark Alabang Inc. | <span class="exp-date">Feb 2023 - July 2023</span>
-                                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Ensured 100% order accuracy through systematic inventory control and digital transaction verification.</p>
-                            </div>
-                            <div class="exp-item">
-                                <strong>Sales Staff</strong><br>
-                                MRPG Footwear Trading | <span class="exp-date">May 2021 - Dec 2022</span>
-                                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Achieved monthly targets through strategic upselling and customer relationship management.</p>
-                            </div>
-                        </div>
-
-                        <div class="info-card">
-                            <h3 class="card-heading">Internship</h3>
-                            <div class="exp-item">
-                                <strong>Data Analyst / Data Encoder</strong><br>
-                                BENCHMARK VALUERS & CREDIT SOLUTIONS, INC. |<br> <span class="exp-date">March 2026 - May 2026</span>
-                                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Maintained high levels of data integrity by accurately inputting and cross-verifying information within the organization's digital systems.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <aside>
-                        <div class="info-card" style="padding: 30px;">
-                            <h3 class="card-heading">Tech Stack</h3>
-                            <p style="font-weight: bold; font-size: 0.8rem; color: var(--accent-blue); margin-bottom: 10px;">LANGUAGES</p>
-                            <div style="margin-bottom: 20px;">
-                                <span class="skill-box">PHP</span> <span class="skill-box">Java</span> 
-                                <span class="skill-box">JavaScript</span> <span class="skill-box">SQL</span>
-                                <span class="skill-box">Python</span> <span class="skill-box">C++</span>
-                            </div>
-
-                            <p style="font-weight: bold; font-size: 0.8rem; color: var(--accent-blue); margin-bottom: 10px;">FRAMEWORKS</p>
-                            <div style="margin-bottom: 20px;">
-                                <span class="skill-box">Laravel</span> <span class="skill-box">React</span> 
-                                <span class="skill-box">Node.js</span> <span class="skill-box">Pandas</span>
-                            </div>
-                        </div>
-
-                        <div class="info-card" style="padding: 30px;">
-                            <h3 class="card-heading">Certifications</h3>
-                            <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                                <li style="margin-bottom: 15px;">
-                                    <small style="color: var(--accent-blue); font-weight: bold;">2025</small><br>
-                                    Cloud Migration Strategies
-                                </li>
-                                <li style="margin-bottom: 15px;">
-                                    <small style="color: var(--accent-blue); font-weight: bold;">2018</small><br>
-                                    Database Management
-                                </li>
-                                <li style="margin-bottom: 15px;">
-                                    <small style="color: var(--accent-blue); font-weight: bold;">2018</small><br>
-                                    Office Productivity Tools
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div style="text-align: center;">
-                            <p style="font-size: 0.8rem; color: #999;">Ready to discuss how I can help your team?</p>
-                            <button onclick="switchPage('contact', document.querySelectorAll('nav a')[3])" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Contact Me</button>
-                        </div>
-                    </aside>
-                </div>
+       <!-- ABOUT ME VIEW -->
+<div id="about" class="page-view">
+    <div class="about-container" style="padding: 40px 0; color: #333;">
+        <div class="hero-flex">
+            <div class="hero-text">
+                <span class="job-title">Junior IT Professional</span>
+                <h1 style="font-size: 3rem; color: #e2e8f0; margin: 10px 0;">Mark Christian Cunanan</h1>
+                <p style="font-size: 1.1rem; color: #e2e8f0; max-width: 600px;">
+                    I am a fresh graduate with a Bachelor of Science in Computer Science from Pamantasan ng Lungsod ng Muntinlupa,
+                    specializing in full-stack development, backend systems, and database management. Throughout my academic journey,
+                    I have focused heavily on mastering core programming concepts and applying them to engineer scalable IT solutions that solve real-world problems.
+                </p>
+            </div>
+            <div class="hero-photo" style="text-align: right;">
+                <img src="id.jpg" alt="Mark Christian Cunanan" class="profile-img" id="profileImage">
             </div>
         </div>
+
+        <div class="about-grid-layout">
+            <div>
+                <div class="info-card">
+                    <h3 class="card-heading">📝 Professional Summary</h3>
+                    <p style="line-height: 1.8;">
+                        Dedicated Computer Science graduate with a strong foundation in PHP, Java, JavaScript, and Database Management. I am committed to leveraging my technical education and problem-solving skills to contribute to a dynamic engineering team. My objective is to bridge the gap between academic theory and industry-standard software development.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="card-heading">🎓 Education</h3>
+                    <div class="exp-item">
+                        <strong>Bachelor of Science in Computer Science</strong><br>
+                        Pamantasan Lungsod ng Muntinlupa | <span class="exp-date">2023 - 2026</span>
+                    </div>
+                    <div class="exp-item">
+                        <strong>Information Technology & Web Development</strong><br>
+                        STI College Alabang (Senior High) | <span class="exp-date">2016 - 2018</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="card-heading">💻 Internship</h3>
+                    <div class="exp-item">
+                        <strong>Data Analyst / Data Encoder</strong><br>
+                        BENCHMARK VALUERS & CREDIT SOLUTIONS, INC. | <span class="exp-date">March 2026 - May 2026</span>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Maintained high levels of data integrity by accurately inputting and cross-verifying information within the organization's digital systems.</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="card-heading">💼 Work Experience</h3>
+                    <div class="exp-item">
+                        <strong>Counter Checker</strong><br>
+                        Landmark Alabang Inc. | <span class="exp-date">Feb 2023 - July 2023</span>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Ensured 100% order accuracy through systematic inventory control and digital transaction verification.</p>
+                    </div>
+                    <div class="exp-item">
+                        <strong>Sales Staff</strong><br>
+                        MRPG Footwear Trading | <span class="exp-date">May 2021 - Dec 2022</span>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Achieved monthly targets through strategic upselling and customer relationship management.</p>
+                    </div>
+                </div>
+            </div>
+
+            <aside>
+                <div class="info-card" style="padding: 30px;">
+                    <h3 class="card-heading">🛠️ Tech Stack</h3>
+                    <p style="font-weight: bold; font-size: 0.8rem; color: var(--accent-blue); margin-bottom: 10px;">LANGUAGES</p>
+                    <div style="margin-bottom: 20px;">
+                        <span class="skill-box">PHP</span> <span class="skill-box">Java</span>
+                        <span class="skill-box">JavaScript</span> <span class="skill-box">TypeScript</span>
+                        <span class="skill-box">SQL</span> <span class="skill-box">Python</span> <span class="skill-box">C++</span>
+                    </div>
+
+                    <p style="font-weight: bold; font-size: 0.8rem; color: var(--accent-blue); margin-bottom: 10px;">FRAMEWORKS</p>
+                    <div style="margin-bottom: 20px;">
+                        <span class="skill-box">Laravel</span> <span class="skill-box">React</span>
+                        <span class="skill-box">Node.js</span> <span class="skill-box">Pandas</span>
+                    </div>
+                </div>
+
+                <div class="info-card" style="padding: 30px;">
+                    <h3 class="card-heading">📜 Certifications</h3>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 15px;">
+                            <small style="color: var(--accent-blue); font-weight: bold;">2025</small><br>
+                            Cloud Migration Strategies
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <small style="color: var(--accent-blue); font-weight: bold;">2018</small><br>
+                            Database Management
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <small style="color: var(--accent-blue); font-weight: bold;">2018</small><br>
+                            Office Productivity Tools
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center;">
+                    <p style="font-size: 0.8rem; color: #999;">Ready to discuss how I can help your team?</p>
+                    <button onclick="switchPage('contact', document.querySelectorAll('nav a')[3])" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Contact Me</button>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
 
         <!-- CONTACT VIEW -->
         <div id="contact" class="page-view">
