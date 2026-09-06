@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
     <title>Mark Christian Cunanan | Portfolio</title>
-   <style>/* ==========================================
+<style>
+/* ==========================================
    1. CSS RESET & GLOBAL VARIABLES
    ========================================== */
 * {
@@ -38,20 +42,109 @@ body {
 /* ==========================================
    2. GLOBAL NAVIGATION (Desktop & Base)
    ========================================== */
-nav { 
-    background: #2c3e50; 
-    padding: 25px 0; 
+nav {
+    background: transparent;
+    padding: 20px 20px 0;
     display: flex;
-    justify-content: center; 
-    align-items: center;
-    width: 100vw; 
+    justify-content: center;
+    width: 100vw;
     position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 1000;
+}
+
+.nav-frame {
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    max-width: 960px;
+    background: #2c3e50;
+    border: 1px solid rgba(52, 152, 219, 0.4);
+    border-radius: 12px;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.nav-particle-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+nav, nav a, .nav-greeting {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+.nav-greeting {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    z-index: 2;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    animation: twinkleGreeting 2.5s ease-in-out infinite;
+}
+
+@keyframes twinkleGreeting {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+    50% {
+        opacity: 0.5;
+        text-shadow: 0 0 2px rgba(56, 189, 248, 0.1);
+    }
+}
+
+.nav-greeting strong {
+    color: #3498db;
+    font-weight: 500;
+}
+
+.nav-links {
+    position: relative;
+    z-index: 2;
+}
+
+nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 8px 14px;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.1s ease;
+}
+
+.nav-particle {
+    position: absolute;
+    bottom: 8px;
+    width: 2px;
+    height: 2px;
+    background: #3498db;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    animation: float-up-particle 3s ease-in infinite;
+}
+
+@keyframes float-up-particle {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-30px); opacity: 0; }
 }
 
 .hamburger-btn {
@@ -61,28 +154,6 @@ nav {
     color: #fff;
     font-size: 1.8rem;
     cursor: pointer;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-nav a { 
-    color: #94a3b8; 
-    text-decoration: none; 
-    flex: 1;
-    margin: 0 6px; 
-    padding: 10px 16px;
-    text-align: center;
-    border-radius: 4px;
-    font-weight: bold; 
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.25s ease, color 0.25s ease, transform 0.1s ease;
 }
 
 nav a:hover { 
@@ -310,6 +381,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 .about-grid-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -366,6 +438,7 @@ h1 {
     border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 60px;
 }
+
 /* ==========================================
    6. BUTTONS & MODAL POPUP STYLES
    ========================================== */
@@ -373,11 +446,9 @@ h1 {
     display: flex;
     justify-content: center;
     gap: 15px;
-    flex-wrap: wrap; /* Prevents breaking on smaller screens */
-    
-    /* Entrance Animation */
+    flex-wrap: wrap;
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    opacity: 0; /* Starts hidden before animation kicks in */
+    opacity: 0;
 }
 
 @keyframes fadeInUp {
@@ -391,7 +462,6 @@ h1 {
     }
 }
 
-/* Base Button Styles & Transition */
 .btn {
     padding: 14px 28px;
     text-decoration: none;
@@ -411,7 +481,6 @@ h1 {
                 border-color 0.3s ease;
 }
 
-/* Global Hover Lift for All Buttons */
 .btn:hover {
     transform: translateY(-3px);
 }
@@ -420,7 +489,6 @@ h1 {
     transform: translateY(-1px);
 }
 
-/* Primary Button ("Explore Projects") */
 .btn-primary {
     background: #3498db;
     color: white;
@@ -428,10 +496,9 @@ h1 {
 }
 
 .btn-primary:hover {
-    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.35); /* Tech-blue ambient glow */
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.35);
 }
 
-/* Secondary Button ("Get In Touch") */
 .btn-secondary {
     background: #2c3e50; 
     color: #fff; 
@@ -443,9 +510,10 @@ h1 {
 
 .btn-secondary:hover {
     background: #34495e; 
-    border-color: #38bdf8; /* Adds a tech-blue accent border glow */
+    border-color: #38bdf8;
     box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2); 
 }
+
 .animated-pdf-btn {
     display: inline-flex;
     align-items: center;
@@ -556,7 +624,7 @@ h1 {
     width: 100%;
     height: 100%;
 }
-/* Fullscreen Button Style */
+
 .pdf-fullscreen-btn {
     background: none;
     border: none;
@@ -573,7 +641,6 @@ h1 {
     color: #38bdf8;
 }
 
-/* Expanded Fullscreen State for the Container */
 .pdf-modal-container.fullscreen {
     width: 100vw !important;
     height: 100vh !important;
@@ -602,33 +669,37 @@ footer {
     margin-left: -50vw; 
     margin-right: -50vw;
 }
+
 /* ==========================================
    FIXED FLOATING SQUARE WEATHER WIDGET
    ========================================== */
 .fixed-weather-widget {
-    position: absolute;            /* Locks it relative to the viewport window */
-    top: 300px;                 /* Adjust top spacing to line up with your project top */
-    left: 20px;                 /* Distance from the left edge of the screen */
-    width: 200px;               /* Square Width */
-    height: 182px;              /* Square Height */
-    z-index: 999;               /* Keeps it visible on top of background grids */
-    border-radius: 12px;        /* Smooth rounded corners */
+    position: absolute;
+    top: 300px;
+    left: 20px;
+    width: 200px;
+    height: 182px;
+    z-index: 999;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
-/* Force the widget inside to fill the square box */
 .fixed-weather-widget .weatherwidget-io {
     display: block;
     width: 100% !important;
     height: 100% !important;
 }
 
-/* Hide on mobile/small screens so it doesn't block project cards */
 @media (max-width: 1200px) {
     .fixed-weather-widget {
-        display: none;
+        position: static;
+        width: 200px;
+        height: 182px;
+        margin: 0 auto 30px;
+        top: auto;
+        left: auto;
     }
 }
 
@@ -650,7 +721,7 @@ footer {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* Maintains a clean 16:9 widescreen video/image ratio */
+    padding-bottom: 56.25%;
 }
 
 .carousel-img {
@@ -670,7 +741,6 @@ footer {
     pointer-events: auto;
 }
 
-/* Carousel Control Buttons */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -695,9 +765,9 @@ footer {
 .prev-btn { left: 12px; }
 .next-btn { right: 12px; }
 
-
-/*======================================
-STATUS BADGE ================*/
+/* ==========================================
+   STATUS BADGE
+   ========================================== */
 .status-badge {
     display: inline-flex;
     align-items: center;
@@ -717,6 +787,7 @@ STATUS BADGE ================*/
     border-radius: 50%;
     background: #2ecc71;
     flex-shrink: 0;
+    animation: pulse-dot 2s infinite;
 }
 
 @keyframes pulse-dot {
@@ -724,11 +795,8 @@ STATUS BADGE ================*/
     50% { box-shadow: 0 0 0 5px rgba(46, 204, 113, 0); }
 }
 
-.status-dot {
-    animation: pulse-dot 2s infinite;
-}
 /* ==========================================
-   CONTACT PAGE ENHANCEMENTS CSS
+   CONTACT PAGE ENHANCEMENTS
    ========================================== */
 .timezone-badge {
     display: inline-flex;
@@ -767,9 +835,9 @@ STATUS BADGE ================*/
     color: #3498db;
     width: 36px;
     height: 36px;
-    min-width: 36px;   /* <-- Prevents width from being compressed */
-    min-height: 36px;  /* <-- Prevents height distortion */
-    flex-shrink: 0;    /* <-- Stops flexbox from squishing it */
+    min-width: 36px;
+    min-height: 36px;
+    flex-shrink: 0;
     border-radius: 6px;
     cursor: pointer;
     display: inline-flex;
@@ -834,6 +902,7 @@ textarea.form-control {
     font-weight: 600;
     text-align: center;
 }
+
 /* ==========================================
    8. RESPONSIVE / MEDIA QUERIES (< 768px)
    ========================================== */
@@ -845,6 +914,10 @@ textarea.form-control {
         right: auto !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+    }
+
+    .nav-greeting {
+        display: none;
     }
 
     nav {
@@ -902,7 +975,6 @@ textarea.form-control {
         font-size: 2.2rem !important;
     }
 
-  
     .dual-video-grid, 
     .contact-grid, 
     .stats-grid {
@@ -918,19 +990,88 @@ textarea.form-control {
         text-align: center;
     }
 }
+
+.contact-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 11, 20, 0.85);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    padding: 20px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.contact-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.contact-modal-container {
+    width: 100%;
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.contact-modal-overlay.active .contact-modal-container {
+    transform: scale(1);
+}
+
+.contact-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.contact-modal-close:hover {
+    color: #e74c3c;
+}
 </style>
 </head>
 <body>
 
     <!-- NAVIGATION BAR -->
 <nav>
-    <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle Navigation">&#9776;</button>
+    <div class="nav-frame">
+        <div class="nav-particle-layer">
+            <span class="nav-particle" style="left: 5%; animation-delay: 0s;"></span>
+            <span class="nav-particle" style="left: 18%; animation-delay: 0.6s;"></span>
+            <span class="nav-particle" style="left: 32%; animation-delay: 1.2s;"></span>
+            <span class="nav-particle" style="left: 48%; animation-delay: 0.3s;"></span>
+            <span class="nav-particle" style="left: 62%; animation-delay: 1.5s;"></span>
+            <span class="nav-particle" style="left: 75%; animation-delay: 0.9s;"></span>
+            <span class="nav-particle" style="left: 88%; animation-delay: 1.8s;"></span>
+        </div>
 
-    <div id="navLinks" class="nav-links">
-        <a onclick="animateAndSwitch('home', this); toggleMenu();" class="active-nav">Home</a>
-        <a onclick="animateAndSwitch('portfolio', this); toggleMenu();">Projects</a>
-        <a onclick="animateAndSwitch('about', this); toggleMenu();">About Me</a>
-        <a onclick="animateAndSwitch('contact', this); toggleMenu();">Contact</a>
+        <span class="nav-greeting">Thanks for stopping by</span>
+
+        <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Toggle Navigation" style="position: relative; z-index: 2;">&#9776;</button>
+
+        <div id="navLinks" class="nav-links">
+            <a onclick="animateAndSwitch('home', this); toggleMenu();" class="active-nav">Home</a>
+            <a onclick="animateAndSwitch('portfolio', this); toggleMenu();">Projects</a>
+            <a onclick="animateAndSwitch('about', this); toggleMenu();">About Me</a>
+            <a onclick="animateAndSwitch('contact', this); toggleMenu();">Contact</a>
+        </div>
     </div>
 </nav>
     <div class="container">
@@ -1311,120 +1452,118 @@ textarea.form-control {
 </div>
 
       <!-- CONTACT VIEW -->
-        <div id="contact" class="page-view">
-            <div class="contact-elegant-wrapper" style="padding: 40px 0;">
-                <header class="contact-hero">
-                    <span class="job-title">Get In Touch</span>
-                    <h1 style="color: #e2e8f0">Mark Christian Cunanan</h1>
-                    <div class="sub-heading-border"></div>
-                    
-                    <!-- Live Timezone Badge -->
-                    <div class="timezone-badge">
-                        <span class="timezone-dot"></span>
-                        <span id="liveTimeBadge">Loading Manila Time...</span>
-                    </div>
+<div id="contact" class="page-view">
+    <div class="contact-elegant-wrapper" style="padding: 40px 0;">
+        <header class="contact-hero">
+            <span class="job-title">Get In Touch</span>
+            <h1 style="color: #e2e8f0">Mark Christian Cunanan</h1>
+            <div class="sub-heading-border"></div>
 
-                    <p style="color: #e2e8f0; max-width: 600px; margin: 0 auto; line-height: 1.8;">
-                        Thank you for visiting my portfolio. I am currently open to new opportunities and would love to hear from you. Reach out directly or send a message using the form below.
-                    </p>
-                </header>
-
-                <div class="profile-card">
-                    <img src="idpic.jpg" alt="Mark Christian Cunanan" class="profile-img">
-                    <div class="profile-details">
-                        <h3 style="margin-bottom: 10px; color: #2c3e50;">Junior IT Professional</h3>
-                        <p style="color: #666; font-size: 0.95rem; line-height: 1.7;">
-                            Passionate about the intersection of logic and creativity. As a Computer Science graduate, I focus on crafting reliable software through disciplined programming and a commitment to lifelong learning.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="contact-grid">
-                    <!-- Phone Card with Copy Button -->
-                    <div class="contact-card">
-                        <span class="card-label"><i class="fa-solid fa-phone" style="margin-right: 6px;"></i>Phone/Viber</span>
-                        <div class="contact-card-inner" style="margin-top: 8px;">
-                            <span id="phoneNumberText" class="card-value">+63961 734 2001</span>
-                         <button class="copy-btn-icon-only" onclick="copyTextContent('phoneNumberText', this)" title="Copy Phone Number">
-    <i class="fa-solid fa-clipboard"></i>
-</button>
-                        </div>
-                    </div>
-
-                    <!-- Email Card with Copy Button -->
-                    <div class="contact-card">
-                        <span class="card-label"><i class="fa-solid fa-envelope" style="margin-right: 6px;"></i>Email</span>
-                        <div class="contact-card-inner" style="margin-top: 8px;">
-                            <span id="emailText" class="card-value" style="font-size: 1.05rem;">iancunanan81@gmail.com  </span>
-                                          <button class="copy-btn-icon-only" onclick="copyTextContent('emailText', this)" title="Copy Email">
-    <i class="fa-solid fa-clipboard"></i>
-</button>
-                        </div>
-                    </div>
-
-                    <!-- Facebook Card -->
-                    <a href="https://www.facebook.com/mark.christian.cunanan.2024/" target="_blank" class="contact-card link-card">
-                        <span class="card-label"><i class="fa-brands fa-facebook" style="margin-right: 6px;"></i>Facebook</span>
-                        <span class="card-handle">Mark Christian Cunanan</span>
-                    </a>
-
-                    <!-- LinkedIn Card -->
-                    <a href="https://www.linkedin.com/in/mark-christian-cunanan-036469394/" target="_blank" class="contact-card link-card">
-                        <span class="card-label"><i class="fa-brands fa-linkedin" style="margin-right: 6px;"></i>LinkedIn</span>
-                        <span class="card-handle">MarkCunanan-Dev</span>
-                    </a>
-
-                    <!-- GitHub Card -->
-                    <a href="https://github.com/marcianonly" target="_blank" class="contact-card link-card">
-                        <span class="card-label"><i class="fa-brands fa-github" style="margin-right: 6px;"></i>GitHub</span>
-                        <span class="card-handle">marcianonly</span>
-                    </a>
-
-                    <!-- Resume Card -->
-                    <a href="MARK CHRISTIAN T.pdf" target="_blank" class="contact-card" style="text-decoration: none; color: inherit; display: block;">
-                        <span class="card-label"><i class="fa-solid fa-file-pdf" style="margin-right: 6px;"></i>Resume / CV</span>
-                        <span class="card-value">View PDF</span>
-                    </a>
-                </div>
-
-                <!-- Working Contact Form Section (Web3Forms Integration) -->
-                <section class="contact-form-container">
-                    <h3 class="card-heading" style="margin-top: 0;">Send Me a Direct Message</h3>
-                   <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-    <!-- Your generated Web3Forms Access Key -->
-    <input type="hidden" name="access_key" value="c3d1e110-5d91-4232-91b4-05ec98d31662">
-                        
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="e.g. Recruiter Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Your Email</label>
-                                <input type="email" id="email" name="email" class="form-control" placeholder="name@company.com" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Write your message or project inquiry here..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 0.95rem;">Send Message</button>
-                        <div id="formStatus" class="form-status"></div>
-                    </form>
-                </section>
+            <!-- Live Timezone Badge -->
+            <div class="timezone-badge">
+                <span class="timezone-dot"></span>
+                <span id="liveTimeBadge">Loading Manila Time...</span>
             </div>
-        </div>
-                <section class="interview-wrapper">
-                    <h2 class="call-heading" style="color:#3498db">Looking to add to your tech team?</h2><br><br>
-                    <p class="call-subheading" style="color: #e2e8f0">I am open to new opportunities and ready to discuss how my skills can benefit your company.</p><br>
-                    <a href="mailto:iancunanan81@gmail.com" class="btn btn-secondary" style="background: #2c3e50; color: #fff; padding: 15px 40px;">SEND A MESSAGE</a>
-                </section>
+
+            <p style="color: #e2e8f0; max-width: 600px; margin: 0 auto; line-height: 1.8;">
+                Thank you for visiting my portfolio. I am currently open to new opportunities and would love to hear from you. Reach out directly or send a message using the form below.
+            </p>
+        </header>
+
+        <div class="profile-card">
+            <img src="idpic.jpg" alt="Mark Christian Cunanan" class="profile-img">
+            <div class="profile-details">
+                <h3 style="margin-bottom: 10px; color: #2c3e50;">Junior IT Professional</h3>
+                <p style="color: #666; font-size: 0.95rem; line-height: 1.7;">
+                    Passionate about the intersection of logic and creativity. As a Computer Science graduate, I focus on crafting reliable software through disciplined programming and a commitment to lifelong learning.
+                </p>
             </div>
         </div>
 
-    </div> 
+        <div class="contact-grid">
+            <!-- Phone Card with Copy Button -->
+            <div class="contact-card">
+                <span class="card-label"><i class="fa-solid fa-phone" style="margin-right: 6px;"></i>Phone/Viber</span>
+                <div class="contact-card-inner" style="margin-top: 8px;">
+                    <span id="phoneNumberText" class="card-value">+63961 734 2001</span>
+                    <button class="copy-btn-icon-only" onclick="copyTextContent('phoneNumberText', this)" title="Copy Phone Number" aria-label="Copy phone number">
+                        <i class="fa-solid fa-clipboard"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Email Card with Copy Button -->
+            <div class="contact-card">
+                <span class="card-label"><i class="fa-solid fa-envelope" style="margin-right: 6px;"></i>Email</span>
+                <div class="contact-card-inner" style="margin-top: 8px;">
+                    <span id="emailText" class="card-value" style="font-size: 1.05rem;">iancunanan81@gmail.com</span>
+                    <button class="copy-btn-icon-only" onclick="copyTextContent('emailText', this)" title="Copy Email" aria-label="Copy email">
+                        <i class="fa-solid fa-clipboard"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Facebook Card -->
+            <a href="https://www.facebook.com/mark.christian.cunanan.2024/" target="_blank" class="contact-card link-card">
+                <span class="card-label"><i class="fa-brands fa-facebook" style="margin-right: 6px;"></i>Facebook</span>
+                <span class="card-handle">Mark Christian Cunanan</span>
+            </a>
+
+            <!-- LinkedIn Card -->
+            <a href="https://www.linkedin.com/in/mark-christian-cunanan-036469394/" target="_blank" class="contact-card link-card">
+                <span class="card-label"><i class="fa-brands fa-linkedin" style="margin-right: 6px;"></i>LinkedIn</span>
+                <span class="card-handle">MarkCunanan-Dev</span>
+            </a>
+
+            <!-- GitHub Card -->
+            <a href="https://github.com/marcianonly" target="_blank" class="contact-card link-card">
+                <span class="card-label"><i class="fa-brands fa-github" style="margin-right: 6px;"></i>GitHub</span>
+                <span class="card-handle">marcianonly</span>
+            </a>
+
+            <!-- Resume Card -->
+            <a href="Mark Christian T.pdf" target="_blank" class="contact-card" style="text-decoration: none; color: inherit; display: block;">
+                <span class="card-label"><i class="fa-solid fa-file-pdf" style="margin-right: 6px;"></i>Resume / CV</span>
+                <span class="card-value">View PDF</span>
+            </a>
+        </div>
+
+        <!-- Working Contact Form Section (Web3Forms Integration) -->
+      <div id="contactModalOverlay" class="contact-modal-overlay">
+    <div class="contact-modal-container">
+        <button type="button" class="contact-modal-close" onclick="closeContactModal()">&times;</button>
+        <h3 class="card-heading" style="margin-top: 0;">Send Me a Direct Message</h3>
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="c3d1e110-5d91-4232-91b4-05ec98d31662">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="e.g. Recruiter Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="name@company.com" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" class="form-control" placeholder="Write your message or project inquiry here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 0.95rem;">Send Message</button>
+            <div id="formStatus" class="form-status"></div>
+        </form>
+    </div>
+</div>
+
+  <section class="interview-wrapper">
+    <h2 class="call-heading" style="color:#3498db">Looking to add to your tech team?</h2><br><br>
+    <p class="call-subheading" style="color: #e2e8f0">I am open to new opportunities and ready to discuss how my skills can benefit your company.</p><br>
+    <button type="button" onclick="openContactModal()" class="btn btn-secondary" style="background: #2c3e50; color: #fff; padding: 15px 40px;">SEND A MESSAGE</button>
+</section>
+</div>
 
     <!-- GLOBAL FOOTER -->
     <footer>
@@ -1451,11 +1590,11 @@ textarea.form-control {
 
     <!-- JAVASCRIPT FOR PAGE SWITCHING & ANIMATIONS -->
     <script>
-        // --- 1. Live Asia/Manila Time Clock ---
+// --- 1. Live Asia/Manila Time Clock ---
 function updateManilaTime() {
     const timeBadge = document.getElementById('liveTimeBadge');
     if (!timeBadge) return;
-    
+
     const options = {
         timeZone: 'Asia/Manila',
         hour: 'numeric',
@@ -1466,30 +1605,27 @@ function updateManilaTime() {
         month: 'short',
         day: 'numeric'
     };
-    
+
     const formatter = new Intl.DateTimeFormat([], options);
     timeBadge.textContent = `${formatter.format(new Date())} (Asia/Manila)`;
 }
 
-// Update clock every second
 setInterval(updateManilaTime, 1000);
-updateManilaTime(); // Run immediately on load
+updateManilaTime();
 
 // --- 2. Copy to Clipboard Utility ---
 function copyTextContent(elementId, buttonElement) {
     const textToCopy = document.getElementById(elementId).textContent.trim();
-    
+
     navigator.clipboard.writeText(textToCopy).then(() => {
         const iconElement = buttonElement.querySelector('i');
         const originalIconClass = iconElement.className;
-        
-        // Automatically switch icon to a checkmark & turn green
+
         iconElement.className = 'fa-solid fa-check';
         buttonElement.style.background = '#2ecc71';
         buttonElement.style.borderColor = '#2ecc71';
         buttonElement.style.color = '#fff';
-        
-        // Automatically revert back after 2 seconds
+
         setTimeout(() => {
             iconElement.className = originalIconClass;
             buttonElement.style.background = '';
@@ -1508,13 +1644,13 @@ if (contactForm) {
         e.preventDefault();
         const formStatus = document.getElementById('formStatus');
         const submitBtn = contactForm.querySelector('button[type="submit"]');
-        
+
         formStatus.style.color = '#3498db';
         formStatus.textContent = 'Sending message...';
         submitBtn.disabled = true;
-        
+
         const formData = new FormData(contactForm);
-        
+
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
@@ -1539,14 +1675,15 @@ if (contactForm) {
         });
     });
 }
-        function resetCarouselToFirst(carouselId) {
+
+// --- 4. Project Carousel ---
+function resetCarouselToFirst(carouselId) {
     const carousel = document.getElementById(carouselId);
     const images = carousel.querySelectorAll('.carousel-img');
     images.forEach(img => img.classList.remove('active'));
     images[0].classList.add('active');
 }
 
-// Hover-to-preview: only runs on devices with real hover + a mouse (skips touch)
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     document.querySelectorAll('.project-carousel').forEach(carousel => {
         const carouselId = carousel.id;
@@ -1564,38 +1701,36 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         });
     });
 }
-  function moveSlide(direction, carouselId) {
+
+function moveSlide(direction, carouselId) {
     const carousel = document.getElementById(carouselId);
     const images = carousel.querySelectorAll('.carousel-img');
     let activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
-    
-    // Hide current image
+
     images[activeIndex].classList.remove('active');
-    
-    // Calculate new index (loops back to start or end seamlessly)
+
     activeIndex += direction;
     if (activeIndex >= images.length) {
-        activeIndex = 0; 
+        activeIndex = 0;
     } else if (activeIndex < 0) {
-        activeIndex = images.length - 1; 
+        activeIndex = images.length - 1;
     }
-    
-    // Show new image
+
     images[activeIndex].classList.add('active');
 }
- // Define the SVG paths for Open and Closed eyes
+
+// --- 5. PDF Modal ---
 const openEyePath = "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z";
 const closedEyePath = "M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2z";
 
 function openPdfModal() {
     const modal = document.getElementById('pdfModalOverlay');
     const eyePath = document.getElementById('eyePath');
-    
-    // Change icon to closed eye when clicked
+
     eyePath.setAttribute('d', closedEyePath);
-    
+
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Locks background scrolling
+    document.body.style.overflow = 'hidden';
 }
 
 function togglePdfFullscreen() {
@@ -1603,82 +1738,88 @@ function togglePdfFullscreen() {
     modalContainer.classList.toggle('fullscreen');
 }
 
-
 function closePdfModal() {
     const modal = document.getElementById('pdfModalOverlay');
     const modalContainer = document.querySelector('.pdf-modal-container');
     const eyePath = document.getElementById('eyePath');
-    
-    // Reset icon back to open eye when closed
+
     eyePath.setAttribute('d', openEyePath);
-    
+
     modal.classList.remove('active');
-    modalContainer.classList.remove('fullscreen'); // Resets full screen state if it was active
-    document.body.style.overflow = 'auto'; // Restores background scrolling
+    modalContainer.classList.remove('fullscreen');
+    if (!document.getElementById('contactModalOverlay').classList.contains('active')) {
+        document.body.style.overflow = 'auto';
+    }
 }
 
-// Allows clicking outside the modal box to close it
+// --- 6. Contact Modal ---
+function openContactModal() {
+    document.getElementById('contactModalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeContactModal() {
+    document.getElementById('contactModalOverlay').classList.remove('active');
+    if (!document.getElementById('pdfModalOverlay').classList.contains('active')) {
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Click outside either modal to close it
 window.addEventListener('click', function(event) {
-    const modal = document.getElementById('pdfModalOverlay');
-    if (event.target === modal) {
+    const pdfModal = document.getElementById('pdfModalOverlay');
+    const contactModal = document.getElementById('contactModalOverlay');
+    if (event.target === pdfModal) {
         closePdfModal();
+    }
+    if (event.target === contactModal) {
+        closeContactModal();
     }
 });
 
-
-// Allows clicking outside the modal box to close it
-window.addEventListener('click', function(event) {
-    const modal = document.getElementById('pdfModalOverlay');
-    if (event.target === modal) {
-        closePdfModal();
-    }
-});
-        function animateAndSwitch(pageId, element) {
-    // 1. Add a temporary click-animation class
+// --- 7. Page Navigation ---
+function animateAndSwitch(pageId, element) {
     element.classList.add('nav-clicked');
 
-    // 2. Wait 150ms for the animation to be visible, then switch the page
     setTimeout(() => {
         switchPage(pageId, element);
         element.classList.remove('nav-clicked');
     }, 150);
 }
-        function toggleMenu() {
+
+function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     navLinks.classList.toggle('active');
 }
-        function switchPage(pageId, element) {
-            // Hide all views
-            const views = document.querySelectorAll('.page-view');
-            views.forEach(view => view.classList.remove('active-view'));
 
-            // Show selected view
-            const targetView = document.getElementById(pageId);
-            if (targetView) {
-                targetView.classList.add('active-view');
-            }
+function switchPage(pageId, element) {
+    const views = document.querySelectorAll('.page-view');
+    views.forEach(view => view.classList.remove('active-view'));
 
-            // Update active nav styling
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => link.classList.remove('active-nav'));
-            if (element) {
-                element.classList.add('active-nav');
-            }
+    const targetView = document.getElementById(pageId);
+    if (targetView) {
+        targetView.classList.add('active-view');
+    }
 
-            // Scroll to top smoothly
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => link.classList.remove('active-nav'));
+    if (element) {
+        element.classList.add('active-nav');
+    }
 
-        // Interactive click bounce effect for profile image on About page
-        const profileImg = document.getElementById('profileImage');
-        if (profileImg) {
-            profileImg.addEventListener('click', function() {
-                this.classList.add('animate-click');
-                setTimeout(() => {
-                    this.classList.remove('animate-click');
-                }, 600);
-            });
-        }
-    </script>
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// --- 8. Profile Image Bounce ---
+const profileImg = document.getElementById('profileImage');
+if (profileImg) {
+    profileImg.addEventListener('click', function() {
+        this.classList.add('animate-click');
+        setTimeout(() => {
+            this.classList.remove('animate-click');
+        }, 600);
+    });
+}
+</script>
 </body>
 </html>
